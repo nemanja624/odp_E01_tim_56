@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # KursHub — uputstvo za pokretanje (dev)
 
 ## Prerekviziti
@@ -20,3 +21,7 @@ npm run dev   # Vite na 5173
 ## Login demo nalozi (posle seeda)
 - Profesor: prof@fakultet.rs / password
 - Student:  student@fakultet.rs / password
+=======
+# odp_E01_tim_56
+E01
+>>>>>>> 3ae9840a9f7bb96f220cff480a8ee5b05141720a
