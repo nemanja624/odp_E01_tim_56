@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import * as svc from "../services/auth.service";
-import { env } from "../config/env";
+import * as svc from "../services/auth.service.js";
+import { env } from "../config/env.js";
 
 export async function register(req: Request, res: Response){
   const user = await svc.register(req.body);

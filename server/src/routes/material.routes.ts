@@ -10,7 +10,7 @@ import * as ctrl from "../controllers/material.controller";
 
 const r = Router();
 const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, path.join(process.cwd(), "server", "src", "uploads", "materials")),
+  destination: (_req, _file, cb) => cb(null, path.join(process.cwd(), "src", "uploads", "materials")),
   filename: (_req, file, cb) => cb(null, Date.now() + "-" + file.originalname)
 });
 const upload = multer({ storage, fileFilter: (_req, file, cb) => {

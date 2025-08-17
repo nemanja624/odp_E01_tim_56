@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isUserEnrolled = exports.enroll = exports.list = void 0;
+var courseRepo = require("../repositories/course.repo");
+var userRepo = require("../repositories/user.repo");
+var list = function () { return courseRepo.list(); };
+exports.list = list;
+var enroll = function (userId, courseIds) { return userRepo.enroll(userId, courseIds); };
+exports.enroll = enroll;
+exports.isUserEnrolled = courseRepo.isUserEnrolled;

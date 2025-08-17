@@ -1,8 +1,8 @@
-import * as users from "../repositories/user.repo";
+import * as users from "../repositories/user.repo.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { env } from "../config/env";
-import { prisma } from "../db/prisma";
+import { env } from "../config/env.js";
+import { prisma } from "../db/prisma.js";
 
 export async function register(input: {email:string;password:string;name:string;role:"STUDENT"|"PROFESSOR"; courseIds:number[]}){
   const exists = await users.findByEmail(input.email);

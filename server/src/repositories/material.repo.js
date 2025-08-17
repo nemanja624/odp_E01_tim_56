@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.byId = exports.remove = exports.create = exports.listByCourse = void 0;
+var prisma_1 = require("../db/prisma");
+var listByCourse = function (courseId) { return prisma_1.prisma.material.findMany({ where: { courseId: courseId }, orderBy: { createdAt: "desc" } }); };
+exports.listByCourse = listByCourse;
+var create = function (data) { return prisma_1.prisma.material.create({ data: data }); };
+exports.create = create;
+var remove = function (id) { return prisma_1.prisma.material.delete({ where: { id: id } }); };
+exports.remove = remove;
+var byId = function (id) { return prisma_1.prisma.material.findUnique({ where: { id: id } }); };
+exports.byId = byId;

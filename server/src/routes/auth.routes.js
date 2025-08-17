@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var http_js_1 = require("../core/http.js");
+var validate_js_1 = require("../middleware/validate.js");
+var auth_schema_js_1 = require("../validation/auth.schema.js");
+var ctrl = require("../controllers/auth.controller.js");
+var auth_js_1 = require("../middleware/auth.js");
+var r = (0, express_1.Router)();
+r.post("/register", (0, validate_js_1.validate)(auth_schema_js_1.registerSchema), (0, http_js_1.asyncHandler)(ctrl.register));
+r.post("/login", (0, validate_js_1.validate)(auth_schema_js_1.loginSchema), (0, http_js_1.asyncHandler)(ctrl.login));
+r.post("/logout", (0, http_js_1.asyncHandler)(ctrl.logout));
+r.get("/me", auth_js_1.requireAuth, (0, http_js_1.asyncHandler)(ctrl.me));
+exports.default = r;

@@ -7,19 +7,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role { STUDENT PROFESSOR }
-enum ReactionValue { LIKE DISLIKE }
+enum Role {
+  STUDENT
+  PROFESSOR
+}
+
+enum ReactionValue {
+  LIKE
+  DISLIKE
+}
 
 model User {
-  id           Int       @id @default(autoincrement())
-  email        String    @unique
-  passwordHash String
-  name         String
-  role         Role
-  enrollments  Enrollment[]
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  passwordHash  String
+  name          String
+  role          Role
+  enrollments   Enrollment[]
   announcements Announcement[] @relation("AnnouncementAuthor")
-  comments     Comment[]
-  createdAt    DateTime  @default(now())
+  comments      Comment[]
+  reactions     Reaction[]
+  createdAt     DateTime       @default(now())
 }
 
 model Course {
@@ -34,39 +42,40 @@ model Course {
 }
 
 model Enrollment {
-  userId   Int
-  courseId Int
-  user     User   @relation(fields: [userId], references: [id])
-  course   Course @relation(fields: [courseId], references: [id])
+  userId    Int
+  courseId  Int
+  user      User     @relation(fields: [userId], references: [id])
+  course    Course   @relation(fields: [courseId], references: [id])
   createdAt DateTime @default(now())
+
   @@id([userId, courseId])
 }
 
 model Announcement {
-  id         Int       @id @default(autoincrement())
-  courseId   Int
-  authorId   Int
-  title      String?
-  content    String
-  imageUrl   String?
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  course     Course    @relation(fields: [courseId], references: [id])
-  author     User      @relation("AnnouncementAuthor", fields: [authorId], references: [id])
-  comments   Comment[]
-  reactions  Reaction[]
+  id        Int        @id @default(autoincrement())
+  courseId  Int
+  authorId  Int
+  title     String?
+  content   String
+  imageUrl  String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  course    Course     @relation(fields: [courseId], references: [id])
+  author    User       @relation("AnnouncementAuthor", fields: [authorId], references: [id])
+  comments  Comment[]
+  reactions Reaction[]
 }
 
 model Material {
-  id         Int      @id @default(autoincrement())
-  courseId   Int
-  title      String
+  id          Int      @id @default(autoincrement())
+  courseId    Int
+  title       String
   description String?
-  fileUrl    String
-  mimeType   String
-  uploadedBy Int
-  createdAt  DateTime @default(now())
-  course     Course   @relation(fields: [courseId], references: [id])
+  fileUrl     String
+  mimeType    String
+  uploadedBy  Int
+  createdAt   DateTime @default(now())
+  course      Course   @relation(fields: [courseId], references: [id])
 }
 
 model Comment {
@@ -81,11 +90,12 @@ model Comment {
 }
 
 model Reaction {
-  id             Int          @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   announcementId Int
   userId         Int
   value          ReactionValue
-  announcement   Announcement @relation(fields: [announcementId], references: [id])
-  user           User         @relation(fields: [userId], references: [id])
+  announcement   Announcement  @relation(fields: [announcementId], references: [id])
+  user           User          @relation(fields: [userId], references: [id])
+
   @@unique([announcementId, userId])
 }

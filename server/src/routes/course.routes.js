@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var http_1 = require("../core/http");
+var auth_1 = require("../middleware/auth");
+var validate_1 = require("../middleware/validate");
+var course_schema_1 = require("../validation/course.schema");
+var ctrl = require("../controllers/course.controller");
+var r = (0, express_1.Router)();
+r.get("/", (0, http_1.asyncHandler)(ctrl.list));
+r.post("/enroll", auth_1.requireAuth, (0, validate_1.validate)(course_schema_1.enrollSchema), (0, http_1.asyncHandler)(ctrl.enroll));
+exports.default = r;

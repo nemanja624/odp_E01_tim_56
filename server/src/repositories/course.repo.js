@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isUserEnrolled = exports.byId = exports.list = void 0;
+var prisma_1 = require("../db/prisma");
+var list = function () { return prisma_1.prisma.course.findMany({ orderBy: { name: "asc" } }); };
+exports.list = list;
+var byId = function (id) { return prisma_1.prisma.course.findUnique({ where: { id: id } }); };
+exports.byId = byId;
+var isUserEnrolled = function (userId, courseId) { return prisma_1.prisma.enrollment.findUnique({ where: { userId_courseId: { userId: userId, courseId: courseId } } }); };
+exports.isUserEnrolled = isUserEnrolled;
