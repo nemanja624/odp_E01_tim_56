@@ -1,6 +1,6 @@
+PZ E01 - Pametna platforma za online učenje
 
-# odp_E01_tim_56
-E01
+Platforma za razmenu obaveštenja i materijala među studentima.
 
 
 
