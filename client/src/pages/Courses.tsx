@@ -15,9 +15,9 @@ export default function Courses(){
     <div>
       <NavBar/>
       <div className="container-page">
-        <div className="mb-6">
-          <h1 className="text-2xl font-semibold">Kursevi</h1>
-          <p className="text-sm text-slate-600 mt-1">
+        <div className="mb-5">
+          <h1 className="text-2x1 font-bold">Kursevi</h1>
+          <p className="text-sm text-slate-900 mt-1">
             {user ? "Izaberi kurs i pristupi obaveštenjima i materijalima."
                   : "Prijavi se da pristupiš sadržaju kurseva."}
           </p>
@@ -32,7 +32,7 @@ export default function Courses(){
                   <div className="mt-2 text-lg font-semibold">{c.name}</div>
                   <div className="text-sm text-slate-600 mt-1 line-clamp-2">{c.description || "—"}</div>
                 </div>
-                <span className="text-indigo-600 text-sm">Otvori →</span>
+                <span className="text-indigo-500 text-sm">Otvori →</span>
               </div>
             </Link>
           ))}

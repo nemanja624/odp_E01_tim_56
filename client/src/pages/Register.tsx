@@ -23,7 +23,7 @@ export default function Register(){
   };
 
   return (
-    <div className="min-h-screen bg-blue-50">
+    <div className="min-h-screen">
       <div className="max-w-lg mx-auto p-6 mt-12 bg-white rounded-2xl shadow">
         <h1 className="text-2xl font-semibold mb-4">Registracija</h1>
         <form onSubmit={onSubmit} className="flex flex-col gap-3">
