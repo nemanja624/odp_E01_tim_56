@@ -1,4 +1,4 @@
-# Pametna platforma za online učenje 
+# Platforma za online ucenje 
 
 cd server
 cp .env.example .env
