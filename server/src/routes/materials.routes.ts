@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { auth, requireRole } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { materialCreateSchema } from '../validators/material.js';
+import * as Ctrl from '../controllers/materials.controller.js';
+const r = Router();
+r.get('/course/:courseId', auth, Ctrl.list);
+r.post('/course/:courseId', auth, requireRole('PROFESSOR'), Ctrl.uploadMaterial.single('file'), validate(materialCreateSchema), Ctrl.create);
+r.delete('/:id', auth, requireRole('PROFESSOR'), Ctrl.remove);
+export default r;
+r.get('/:id/download', auth, Ctrl.download);

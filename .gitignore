@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+server/node_modules
+client/node_modules
+server/dist
+client/dist
+
+server/src/uploads/*
+!server/src/uploads/images/.gitkeep
+!server/src/uploads/materials/.gitkeep

@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { auth } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { commentCreateSchema, commentUpdateSchema } from '../validators/comment.js';
+import * as Ctrl from '../controllers/comments.controller.js';
+const r = Router();
+r.get('/announcement/:id', auth, Ctrl.list);
+r.post('/announcement/:id', auth, validate(commentCreateSchema), Ctrl.create);
+r.put('/:id', auth, validate(commentUpdateSchema), Ctrl.update);
+r.delete('/:id', auth, Ctrl.remove);
+export default r;

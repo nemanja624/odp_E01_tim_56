@@ -1,0 +1,13 @@
+import { Router } from 'express';
+import authRoutes from './auth.routes.js';
+import courseRoutes from './courses.routes.js';
+import announcementRoutes from './announcements.routes.js';
+import materialRoutes from './materials.routes.js';
+import commentRoutes from './comments.routes.js';
+const router = Router();
+router.use('/auth', authRoutes);
+router.use('/courses', courseRoutes);
+router.use('/announcements', announcementRoutes);
+router.use('/materials', materialRoutes);
+router.use('/comments', commentRoutes);
+export default router;
