@@ -1,4 +1,4 @@
-# Projekat ODP - platforma za online ucenje 
+# Projekat ODP - KursHub - platforma za online ucenje 
 
 cd server
 cp .env.example .env
