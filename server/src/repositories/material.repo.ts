@@ -25,4 +25,4 @@ export async function getById(id:number){
 
 export async function removeById(id:number){
   await pool.query('DELETE FROM materials WHERE id=?',[id]);
-} // ovo sam stavio za brisanje materijala
+} 
