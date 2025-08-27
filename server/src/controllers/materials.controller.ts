@@ -61,7 +61,7 @@ export async function remove(req: Request, res: Response){
 
   await MatRepo.removeById(id);
   res.json({ ok: true });
-} // ovu funkciju sam dodao
+} 
 
 export async function download(req: Request, res: Response){
   // @ts-ignore
@@ -74,7 +74,7 @@ export async function download(req: Request, res: Response){
     return res.status(403).json({ message: 'Not enrolled' });
   }
 
-  const filename = path.basename(mat.file_url); // npr. 17234.pdf
+  const filename = path.basename(mat.file_url); 
   const absPath = path.join(process.cwd(), 'src', 'uploads', 'materials', filename);
 
   return res.download(absPath, filename);
