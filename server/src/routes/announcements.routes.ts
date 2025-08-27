@@ -9,5 +9,5 @@ r.get('/course/:courseId', auth, Ctrl.list);
 r.post('/course/:courseId', auth, requireRole('PROFESSOR'), Ctrl.uploadImage.single('image'), validate(announcementCreateSchema), Ctrl.create);
 r.put('/:id', auth, requireRole('PROFESSOR'), validate(announcementUpdateSchema), Ctrl.update);
 r.delete('/:id', auth, requireRole('PROFESSOR'), Ctrl.remove);
-r.post('/:id/react', auth, validate(reactionSchema), Ctrl.react); // students & profs can react; adjust in client
+r.post('/:id/react', auth, validate(reactionSchema), Ctrl.react); 
 export default r;
