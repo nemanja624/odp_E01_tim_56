@@ -1,5 +1,5 @@
 import { api } from '../api';
-import { SERVER_BASE } from '../api'; // na 20oj liniji je promena a i ovde
+import { SERVER_BASE } from '../api'; 
 import { useAuth } from '../hooks/useAuth';
 export default function AnnouncementCard({ a, onRefresh }:{ a:any, onRefresh:()=>void }){
   const { user } = useAuth();
